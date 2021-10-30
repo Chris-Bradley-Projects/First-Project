@@ -1,4 +1,4 @@
-# Linux Setup Environment:....
+# Linux Setup Environment:
 
 1. Download VSCode - https://code.visualstudio.com/download
 2. Download python - https://www.python.org/downloads/
@@ -19,18 +19,18 @@
 16. git config --global -e ### open the config file and make sure $LOCAL and $REMOTE are added
 17. 
 
-# Git Token:....
+# Git Token:
 
 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 ### Token for pushing
 
-# Git Kraken:....
+# Git Kraken:
 
 1. download Git Kraken - https://www.gitkraken.com/download 
 2. Open the REPO that was initlized
 
 gitkraken ### Used to open Git Kraken from the terminal
 
-# Master Branch:....
+# Master Branch:
 
 master/core ### Default master branch name ?? Still figuring this one out
 master ### Main Branch that holds all features

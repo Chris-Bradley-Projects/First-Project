@@ -21,7 +21,7 @@
 
 # Git Token:
 
-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 ### Token for pushing
+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 ### Token for pushing
 
 # Git Kraken:
 

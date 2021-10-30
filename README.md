@@ -35,4 +35,6 @@ gitkraken ### Used to open Git Kraken from the terminal
 master/core ### Default master branch name ?? Still figuring this one out
 master ### Main Branch that holds all features
 
+# Git notes
 
+git branch -d branch_name ### Delete a Branch

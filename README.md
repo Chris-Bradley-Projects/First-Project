@@ -1,3 +1,13 @@
+
+# Side Notes:
+
+1. IPV4 adress: 10.0.2.15
+2. /24 so subnet is 255.255.255.0
+3. 
+
+
+
+
 # Linux Setup Environment:
 
 1. Download VSCode - https://code.visualstudio.com/download
@@ -37,4 +47,13 @@ master ### Main Branch that holds all features
 
 # Git notes
 
-git branch -d branch_name ### Delete a Branch
+1. Commands realted to Branches
+    
+    git branch name_name ### add a branch
+    git branch -d branch_name ### Delete a Branch
+
+2. Git Gui Commands
+    
+    git gui ### view the default gui
+    gitk --all ### View version history/commits/branches
+    gitkraken ### open gitkraken

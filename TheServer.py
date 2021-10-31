@@ -21,14 +21,18 @@ def handle_client(conn, addr):
 
     connected = True
     while connected:
+
         msg_length = conn.recv(HEADER).decode(FORMAT) # This will decode the bytes into a string in the utf-8 format. We are returing the length of the message that the client is about to send
-        msg_length = int(msg_length) # convert to an interger
-        msg = conn.recv(msg_length).decode(FORMAT) # Now that we know the length of the message about to be sent we can actually recive the message and then decode it to a string
         
-        if msg == DISCONNECT_MESSAGE: 
-            connected = False # we are setting connected equal to False if the msg from the server is equal to the DISSCONNECT_MESSAGE  
+        if msg_length: # checking to make sure we are actually getting a message
         
-        print(f"[{addr}] {msg}")
+            msg_length = int(msg_length) # convert to an interger
+            msg = conn.recv(msg_length).decode(FORMAT) # Now that we know the length of the message about to be sent we can actually recive the message and then decode it to a string
+        
+            if msg == DISCONNECT_MESSAGE: 
+                connected = False # we are setting connected equal to False if the msg from the server is equal to the DISSCONNECT_MESSAGE  
+        
+            print(f"[{addr}] {msg}")
 
     conn.close() # If connected is set to True then we want to close the connection
 

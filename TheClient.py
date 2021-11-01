@@ -1,5 +1,4 @@
 import socket 
-import time
 
 HEADER = 64 # Used for telling the server how many bytes will be in the message from the client. The 64 bytes is a buffer that is recived first. You need to make sure the legth of this message is long enough to represent the length of the messgae coming from the client
 PORT = 5050
@@ -15,9 +14,11 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # The client will now
 
 try:
     client.connect(ADDR) # Connecting to the IP and Port specified
+    print(f"[NEW Client CONNECTION] {ADDR} connected to Server.")
 except:
     ADDR = (SERVER_IP, (PORT + 1))
     client.connect(ADDR)
+    print(f"[NEW Client CONNECTION] {ADDR} connected to Server.")
 
 
 def messageLength(message):
@@ -27,35 +28,31 @@ def messageLength(message):
     msg_length = len(message)
     send_length = str(msg_length).encode(FORMAT) # turn the length of the message about to be sent into a string and then encode it in utf-8
     send_length += (b'' * (HEADER - len(send_length))) # not sure why we need this but keeping it just in case
-    #print(send_length)
 
-    while keep_sending_message == True:
+    while keep_sending_message == True: # Loop until The message was succesfully sent
 
         client.send(send_length) # send the length of the message first 
     
-        message_reponse = client.recv(2048).decode(FORMAT)
+        message_reponse = client.recv(2048).decode(FORMAT) # Wait for the server to confirm the message was recived properly
 
-        if message_reponse == "Message Failed":
+        if message_reponse == "Message Failed": # If message was not recived properly try sneding it again
             keep_sending_message = True
         elif message_reponse == "Message Success":
             keep_sending_message = False
         else:
             pass
     
-    return send_length
+    return send_length # return the length of the message 
 
 def send(msg):
     
     message = msg.encode(FORMAT) # we need to encode the message in UTF-8 format
     
-    message_length = messageLength(message)
-    print(message_length)
+    messageLength(message) # sending the length of the message to the server so the server can be ready to recieve the whole message 
     
     client.send(message) # send the message
     
 
 send("Hello World!")
-input()
 send("Love the world")
-input()
 send(DISCONNECT_MESSAGE)

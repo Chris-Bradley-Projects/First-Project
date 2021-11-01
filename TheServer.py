@@ -19,7 +19,6 @@ try:
     server.bind(ADDR) # Binding the IP and port
 except:
     ADDR = (SERVER_IP, (PORT + 1))
-    print(ADDR)
     server.bind(ADDR)
 
 
@@ -60,8 +59,6 @@ def handle_client(conn, addr):
             print(f"[{addr}] {msg}")
 
     conn.close() # If connected is set to True then we want to close the connection
-
-
 
 def start():
     server.listen() # listening for new connections to the IP and Port
